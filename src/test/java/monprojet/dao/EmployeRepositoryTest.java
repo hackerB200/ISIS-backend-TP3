@@ -27,4 +27,13 @@ class EmployeRepositoryTest {
         assertNotNull(employe, "On doit trouver l'employé Rémi Bastide dans data.sql");
         assertEquals("Remi.Bastide@univ-jfc.fr", employe.getEmail());
     }
+
+    @Test
+    public void testGetSubordonnes() {
+        log.info("On peut trouver les subordonnés d'un employé");
+        List<Employe> subordonnes = dao.findSubordonnesBySuperieurMatricule(1);
+        assertEquals(2, subordonnes.size());
+        assertEquals("Pierre Paul", subordonnes.get(0).getNom());
+        assertEquals("Paul Durand", subordonnes.get(1).getNom());
+    }
 }

@@ -1,17 +1,16 @@
 package monprojet.entity;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-// Un exemple d'entité
-// On utilise Lombok pour auto-générer getter / setter / toString...
-// cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Employe {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Id
     private Integer matricule;
 
     @NonNull
@@ -19,5 +18,13 @@ public class Employe {
 
     @Email
     private String email;
+
+    //un employe peut avoir un superieur hierarchique qui est un autre employe
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "superieur_matricule")
+    private Employe superieur;
+
+    @OneToMany(mappedBy = "superieur")
+    private List<Employe> subordonnes;
 
 }
