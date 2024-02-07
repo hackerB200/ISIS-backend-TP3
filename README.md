@@ -1,4 +1,5 @@
-# Mise en œuvre d'un modèle conceptuel de données en JPA
+# Mise en œuvre d'un modèle conceptuel de données en JPA 
+EVA TUBIA
 
 A partir de ce point de départ, vous devez implémenter en JPA le modèle conceptuel de données (MCD) suivant, qui reprend l'exercice "Organisation des projets" traité en UML au premier semestre.
 
